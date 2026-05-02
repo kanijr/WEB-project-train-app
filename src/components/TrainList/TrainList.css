@@ -1,0 +1,11 @@
+.train-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 420px) {
+  .train-list {
+    grid-template-columns: 1fr;
+  }
+}
