@@ -1,0 +1,26 @@
+.train-card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 24px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.train-card__number {
+  margin: 0;
+  color: #0f172a;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.train-card__route {
+  color: #0f172a;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.train-card__date {
+  font-size: 14px;
+}
