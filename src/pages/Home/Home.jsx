@@ -1,8 +1,26 @@
+import { useMemo, useState } from "react";
 import TrainList from "../../components/TrainList/TrainList";
 import { trains } from "../../data/trains";
 import "./Home.css";
 
 function Home() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [tempSearchQuery, setTempSearchQuery] = useState("");
+
+  const filteredTrains = useMemo(() => {
+    const normalizedQuery = searchQuery.trim().toLowerCase();
+
+    if (!normalizedQuery) {
+      return trains;
+    }
+
+    return trains.filter((train) => {
+      const number = train.number.toLowerCase();
+
+      return number.includes(normalizedQuery);
+    });
+  }, [searchQuery]);
+
   return (
     <main className="home">
       <section className="home__hero">
@@ -15,7 +33,33 @@ function Home() {
           </p>
         </div>
       </section>
-      <TrainList trains={trains} />
+
+      <section className="home__search">
+        <label className="home__search-label" htmlFor="train-search">
+          Пошук рейсу
+        </label>
+
+        <input
+          id="train-search"
+          className="home__search-input"
+          type="text"
+          placeholder="Введіть номер потяга..."
+          value={tempSearchQuery}
+          onChange={(event) => setTempSearchQuery(event.target.value)}
+        />
+        <button
+          className="home__search-btn"
+          onClick={(event) => setSearchQuery(tempSearchQuery)}
+        >
+          Знайти
+        </button>
+
+        <p className="home__search-result">
+          Знайдено рейсів: <strong>{filteredTrains.length}</strong>
+        </p>
+      </section>
+
+      <TrainList trains={filteredTrains} />
     </main>
   );
 }
