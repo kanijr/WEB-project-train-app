@@ -15,9 +15,17 @@ function Home() {
     }
 
     return trains.filter((train) => {
+      const route = `${train.from} ${train.to}`.toLowerCase();
+      const reverseRoute = `${train.to} ${train.from}`.toLowerCase();
       const number = train.number.toLowerCase();
 
-      return number.includes(normalizedQuery);
+      return (
+        number.includes(normalizedQuery) ||
+        route.includes(normalizedQuery) ||
+        reverseRoute.includes(normalizedQuery) ||
+        train.from.toLowerCase().includes(normalizedQuery) ||
+        train.to.toLowerCase().includes(normalizedQuery)
+      );
     });
   }, [searchQuery]);
 
@@ -43,7 +51,7 @@ function Home() {
           id="train-search"
           className="home__search-input"
           type="text"
-          placeholder="Введіть номер потяга..."
+          placeholder="Введіть номер потяга або місто..."
           value={tempSearchQuery}
           onChange={(event) => setTempSearchQuery(event.target.value)}
         />
