@@ -4,6 +4,24 @@
   gap: 24px;
 }
 
+.train-list__empty {
+  padding: 40px 24px;
+  border: 1px dashed #94a3b8;
+  border-radius: 22px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.train-list__empty h2 {
+  margin: 0 0 10px;
+  color: #0f172a;
+}
+
+.train-list__empty p {
+  margin: 0;
+  color: #64748b;
+}
+
 @media (max-width: 420px) {
   .train-list {
     grid-template-columns: 1fr;
