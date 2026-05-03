@@ -5,7 +5,6 @@ import "./Home.css";
 
 function Home() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [tempSearchQuery, setTempSearchQuery] = useState("");
 
   const filteredTrains = useMemo(() => {
     const normalizedQuery = searchQuery.trim().toLowerCase();
@@ -52,15 +51,9 @@ function Home() {
           className="home__search-input"
           type="text"
           placeholder="Введіть номер потяга або місто..."
-          value={tempSearchQuery}
-          onChange={(event) => setTempSearchQuery(event.target.value)}
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
         />
-        <button
-          className="home__search-btn"
-          onClick={(event) => setSearchQuery(tempSearchQuery)}
-        >
-          Знайти
-        </button>
 
         <p className="home__search-result">
           Знайдено рейсів: <strong>{filteredTrains.length}</strong>
