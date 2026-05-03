@@ -1,11 +1,22 @@
 .train-card {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
   padding: 24px;
-  border: 1px solid #d7dce5;
-  border-radius: 16px;
+  border: 1px solid #dbe4f0;
+  border-radius: 22px;
   background: #ffffff;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.train-card:hover {
+  transform: translateY(-4px);
+  border-color: #2563eb;
+  box-shadow: 0 18px 40px rgba(37, 99, 235, 0.14);
 }
 
 .train-card__header {
@@ -13,6 +24,12 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
+}
+
+.train-card__label {
+  margin: 0 0 4px;
+  color: #64748b;
+  font-size: 14px;
 }
 
 .train-card__number {
@@ -23,8 +40,10 @@
 }
 
 .train-card__type {
-  padding: 6px 10px;
-  color: #2563eb;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
   font-size: 13px;
   font-weight: 700;
   white-space: nowrap;
@@ -32,7 +51,7 @@
 
 .train-card__route {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: max-content minmax(60px, 1fr) max-content;
   align-items: center;
   gap: 14px;
 }
@@ -59,31 +78,57 @@
   font-size: 14px;
 }
 
-.train-card__arrow {
-  color: #2563eb;
-  font-size: 26px;
-  font-weight: 700;
+.train-card__line {
+  position: relative;
+  width: 100%;
+  min-width: 60px;
+  height: 2px;
+  background: #cbd5e1;
+}
+
+.train-card__line::before,
+.train-card__line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #2563eb;
+  transform: translateY(-50%);
+}
+
+.train-card__line::before {
+  left: 0;
+}
+
+.train-card__line::after {
+  right: 0;
 }
 
 .train-card__details {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-  padding-top: 14px;
-  border-top: 1px solid #e2e8f0;
 }
 
-.train-card__detail {
-  margin: 0;
-  color: #0f172a;
-  font-size: 15px;
+.train-card__details > div {
+  padding: 14px;
+  border-radius: 16px;
+  background: #f8fafc;
 }
 
-.train-card__detail span {
-  display: block;
-  margin-bottom: 4px;
+.train-card__detail-label {
+  margin: 0 0 4px;
   color: #64748b;
   font-size: 13px;
+}
+
+.train-card__detail-value {
+  margin: 0;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 @media (max-width: 520px) {
