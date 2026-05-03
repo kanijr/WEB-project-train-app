@@ -51,7 +51,7 @@
 
 .train-card__route {
   display: grid;
-  grid-template-columns: max-content minmax(60px, 1fr) max-content;
+  grid-template-columns: auto minmax(60px, 1fr) auto;
   align-items: center;
   gap: 14px;
 }
@@ -76,6 +76,7 @@
 .train-card__date {
   color: #64748b;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .train-card__line {
@@ -108,7 +109,7 @@
 
 .train-card__details {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
   gap: 12px;
 }
 
@@ -138,5 +139,39 @@
 
   .train-card__route {
     gap: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .train-card__route {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .train-card__city--right {
+    text-align: left;
+  }
+
+  .train-card__line {
+    width: 2px;
+    min-width: 0;
+    height: 32px;
+    margin-left: 16px;
+  }
+
+  .train-card__line::before,
+  .train-card__line::after {
+    left: 50%;
+    top: auto;
+    transform: translateX(-50%);
+  }
+
+  .train-card__line::before {
+    top: 0;
+  }
+
+  .train-card__line::after {
+    bottom: 0;
   }
 }
