@@ -62,3 +62,20 @@
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.16);
 }
+
+.booking__price span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.booking__price strong {
+  font-size: 24px;
+}
+
+.booking__content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}

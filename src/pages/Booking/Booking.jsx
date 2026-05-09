@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { trains } from "../../data/trains";
 import "./Booking.css";
+import WagonSelector from "../../components/WagonSelector/WagonSelector";
 
 function Booking() {
   const { trainId } = useParams();
@@ -10,6 +11,14 @@ function Booking() {
     () => trains.find((item) => item.id === Number(trainId)),
     [trainId],
   );
+
+  const [selectedWagon, setSelectedWagon] = useState(
+    train?.wagons?.[0] || null,
+  );
+
+  const handleSelectWagon = (wagon) => {
+    setSelectedWagon(wagon);
+  };
 
   if (!train) {
     return (
@@ -45,6 +54,13 @@ function Booking() {
           <strong>{train.price} грн</strong>
         </div>
       </section>
+      <div className="booking__content">
+        <WagonSelector
+          wagons={train.wagons}
+          selectedWagonId={selectedWagon?.id}
+          onSelectWagon={handleSelectWagon}
+        />
+      </div>
     </main>
   );
 }

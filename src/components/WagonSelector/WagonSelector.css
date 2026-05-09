@@ -1,0 +1,68 @@
+.wagon-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.wagon-selector__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wagon-selector__title {
+  margin: 0;
+  color: #0f172a;
+  font-size: 26px;
+}
+
+.wagon-selector__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.wagon-selector__item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  min-width: 150px;
+  padding: 14px 18px;
+  border: 1px solid #dbe4f0;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #0f172a;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.wagon-selector__item:hover {
+  transform: translateY(-2px);
+  border-color: #2563eb;
+}
+
+.wagon-selector__item--active {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.wagon-selector__number {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.wagon-selector__seats {
+  color: #64748b;
+  font-size: 13px;
+}
+
+@media (max-width: 520px) {
+  .wagon-selector__item {
+    min-width: 100%;
+  }
+}

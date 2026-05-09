@@ -9,6 +9,23 @@ export const trains = [
     duration: "5 год 35 хв",
     trainType: "Інтерсіті+",
     price: 680,
+    wagons: [
+      {
+        id: 1,
+        number: 1,
+        seatsCount: 36,
+      },
+      {
+        id: 2,
+        number: 2,
+        seatsCount: 36,
+      },
+      {
+        id: 3,
+        number: 3,
+        seatsCount: 36,
+      },
+    ],
   },
   {
     id: 2,
@@ -20,6 +37,25 @@ export const trains = [
     duration: "11 год 10 хв",
     trainType: "Нічний швидкий",
     price: 520,
+    wagons: [
+      {
+        id: 1,
+        number: 1,
+        type: "Купе",
+        seatsCount: 36,
+        defaultBookedSeats: [1, 5, 11, 19],
+      },
+      {
+        id: 2,
+        number: 2,
+        seatsCount: 54,
+      },
+      {
+        id: 3,
+        number: 3,
+        seatsCount: 36,
+      },
+    ],
   },
   {
     id: 3,
@@ -31,6 +67,18 @@ export const trains = [
     duration: "8 год 45 хв",
     trainType: "Швидкий",
     price: 470,
+    wagons: [
+      {
+        id: 1,
+        number: 1,
+        seatsCount: 54,
+      },
+      {
+        id: 2,
+        number: 2,
+        seatsCount: 36,
+      },
+    ],
   },
   {
     id: 4,
@@ -42,6 +90,23 @@ export const trains = [
     duration: "16 год 25 хв",
     trainType: "Нічний експрес",
     price: 790,
+    wagons: [
+      {
+        id: 1,
+        number: 1,
+        seatsCount: 36,
+      },
+      {
+        id: 2,
+        number: 2,
+        seatsCount: 26,
+      },
+      {
+        id: 3,
+        number: 3,
+        seatsCount: 54,
+      },
+    ],
   },
   {
     id: 5,
@@ -53,6 +118,18 @@ export const trains = [
     duration: "7 год 12 хв",
     trainType: "Інтерсіті",
     price: 610,
+    wagons: [
+      {
+        id: 1,
+        number: 1,
+        seatsCount: 36,
+      },
+      {
+        id: 2,
+        number: 2,
+        seatsCount: 36,
+      },
+    ],
   },
   {
     id: 6,
@@ -64,5 +141,17 @@ export const trains = [
     duration: "15 год 50 хв",
     trainType: "Пасажирський",
     price: 540,
+    wagons: [
+      {
+        id: 1,
+        number: 1,
+        seatsCount: 36,
+      },
+      {
+        id: 2,
+        number: 2,
+        seatsCount: 54,
+      },
+    ],
   },
 ];
