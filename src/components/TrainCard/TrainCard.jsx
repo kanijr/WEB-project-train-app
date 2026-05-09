@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./TrainCard.css";
 
 function TrainCard({ train }) {
@@ -39,6 +40,10 @@ function TrainCard({ train }) {
           <p className="train-card__detail-value">{train.price} грн</p>
         </div>
       </div>
+
+      <Link className="train-card__button" to={`/booking/${train.id}`}>
+        Обрати рейс
+      </Link>
     </article>
   );
 }

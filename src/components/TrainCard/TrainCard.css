@@ -132,6 +132,35 @@
   font-weight: 700;
 }
 
+.train-card__button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 13px 18px;
+  border: none;
+  border-radius: 14px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.train-card__button:hover {
+  background: #1d4ed8;
+  transform: scale(1.01);
+}
+
+.train-card__button:focus {
+  outline: 3px solid rgba(37, 99, 235, 0.3);
+  outline-offset: 3px;
+}
+
 @media (max-width: 520px) {
   .train-card {
     padding: 18px;
