@@ -1,13 +1,16 @@
 import { Link, useParams } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { trains } from "../../data/trains";
 import "./Booking.css";
 import WagonSelector from "../../components/WagonSelector/WagonSelector";
 import SeatMap from "../../components/SeatMap/SeatMap";
 import BookingForm from "../../components/BookingForm/BookingForm";
+import { createBooking, getBookedSeats } from "../../services/BookingService";
 
 function Booking() {
   const { trainId } = useParams();
+  const [successMessage, setSuccessMessage] = useState("");
+  const [bookedSeats, setBookedSeats] = useState([]);
 
   const train = useMemo(
     () => trains.find((item) => item.id === Number(trainId)),
@@ -20,6 +23,15 @@ function Booking() {
   const [selectedSeats, setSelectedSeats] = useState([]);
 
   const totalPrice = train ? train.price * selectedSeats.length : 0;
+
+  useEffect(() => {
+    if (!train || !selectedWagon) {
+      return;
+    }
+
+    const savedBookedSeats = getBookedSeats(train.id, selectedWagon.id);
+    setBookedSeats(savedBookedSeats);
+  }, [train, selectedWagon]);
 
   const handleSelectWagon = (wagon) => {
     setSelectedWagon(wagon);
@@ -34,6 +46,28 @@ function Booking() {
 
       return [...currentSeats, seatNumber].sort((a, b) => a - b);
     });
+  };
+
+  const handleSubmitBooking = (passengerData) => {
+    const booking = createBooking({
+      trainId: train.id,
+      wagonId: selectedWagon.id,
+      trainNumber: train.number,
+      route: `${train.from} → ${train.to}`,
+      seats: selectedSeats,
+      totalPrice,
+      passenger: passengerData,
+    });
+
+    setBookedSeats((currentSeats) => [
+      ...new Set([...currentSeats, ...booking.seats]),
+    ]);
+
+    setSelectedSeats([]);
+
+    setSuccessMessage(
+      `Бронювання створено. Місця: ${booking.seats.join(", ")}.`,
+    );
   };
 
   if (!train) {
@@ -71,6 +105,10 @@ function Booking() {
         </div>
       </section>
 
+      {successMessage && (
+        <div className="booking__success">{successMessage}</div>
+      )}
+
       <div className="booking__layout">
         <div className="booking__main">
           <WagonSelector
@@ -81,6 +119,7 @@ function Booking() {
           {selectedWagon && (
             <SeatMap
               seatsCount={selectedWagon.seatsCount}
+              bookedSeats={bookedSeats}
               selectedSeats={selectedSeats}
               onToggleSeat={handleToggleSeat}
             />
@@ -88,7 +127,11 @@ function Booking() {
         </div>
 
         <aside className="booking__aside">
-          <BookingForm selectedSeats={selectedSeats} totalPrice={totalPrice} />
+          <BookingForm
+            selectedSeats={selectedSeats}
+            totalPrice={totalPrice}
+            onSubmit={handleSubmitBooking}
+          />
         </aside>
       </div>
     </main>

@@ -7,7 +7,7 @@ const initialFormData = {
   email: "",
 };
 
-function BookingForm({ selectedSeats, totalPrice }) {
+function BookingForm({ selectedSeats, totalPrice, onSubmit }) {
   const [formData, setFormData] = useState(initialFormData);
 
   const handleChange = (event) => {
@@ -22,6 +22,7 @@ function BookingForm({ selectedSeats, totalPrice }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    onSubmit(formData);
     setFormData(initialFormData);
   };
 
