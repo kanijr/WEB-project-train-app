@@ -120,6 +120,7 @@ function Booking() {
             <SeatMap
               seatsCount={selectedWagon.seatsCount}
               bookedSeats={bookedSeats}
+              wagonType={selectedWagon.type}
               selectedSeats={selectedSeats}
               onToggleSeat={handleToggleSeat}
             />

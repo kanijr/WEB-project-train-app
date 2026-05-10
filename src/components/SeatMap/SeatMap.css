@@ -79,19 +79,44 @@
   font-weight: 700;
 }
 
-.seat-map__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 48px);
-  justify-content: center;
-  gap: 10px;
+.seat-map__layout {
+  --seat-size: 48px;
+  --seat-gap: 10px;
+  --aisle-width: 26px;
+  --group-gap: 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--seat-gap);
   width: fit-content;
   min-width: max-content;
   margin: 0 auto;
 }
 
+.seat-map__row {
+  display: flex;
+  align-items: center;
+  gap: var(--seat-gap);
+}
+
+.seat-map__row--group-end {
+  margin-bottom: var(--group-gap);
+}
+
+.seat-map__row--group-end:last-child {
+  margin-bottom: 0;
+}
+
+.seat-map__aisle {
+  width: var(--aisle-width);
+  height: var(--seat-size);
+  flex: 0 0 var(--aisle-width);
+}
+
 .seat-map__seat {
-  width: 48px;
-  height: 48px;
+  width: var(--seat-size);
+  height: var(--seat-size);
+  flex: 0 0 var(--seat-size);
   border: none;
   border-radius: 12px;
   color: #ffffff;

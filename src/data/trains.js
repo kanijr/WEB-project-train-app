@@ -13,16 +13,19 @@ export const trains = [
       {
         id: 1,
         number: 1,
+        type: "Сидячий",
         seatsCount: 36,
       },
       {
         id: 2,
         number: 2,
+        type: "Сидячий",
         seatsCount: 36,
       },
       {
         id: 3,
         number: 3,
+        type: "Сидячий",
         seatsCount: 36,
       },
     ],
@@ -43,16 +46,17 @@ export const trains = [
         number: 1,
         type: "Купе",
         seatsCount: 36,
-        defaultBookedSeats: [1, 5, 11, 19],
       },
       {
         id: 2,
         number: 2,
+        type: "Плацкарт",
         seatsCount: 54,
       },
       {
         id: 3,
         number: 3,
+        type: "Сидячий",
         seatsCount: 36,
       },
     ],
@@ -71,11 +75,13 @@ export const trains = [
       {
         id: 1,
         number: 1,
+        type: "Плацкарт",
         seatsCount: 54,
       },
       {
         id: 2,
         number: 2,
+        type: "Купе",
         seatsCount: 36,
       },
     ],
@@ -94,16 +100,19 @@ export const trains = [
       {
         id: 1,
         number: 1,
+        type: "Купе",
         seatsCount: 36,
       },
       {
         id: 2,
         number: 2,
+        type: "Купе",
         seatsCount: 26,
       },
       {
         id: 3,
         number: 3,
+        type: "Плацкарт",
         seatsCount: 54,
       },
     ],
@@ -122,11 +131,13 @@ export const trains = [
       {
         id: 1,
         number: 1,
+        type: "Сидячий",
         seatsCount: 36,
       },
       {
         id: 2,
         number: 2,
+        type: "Сидячий",
         seatsCount: 36,
       },
     ],
@@ -145,11 +156,13 @@ export const trains = [
       {
         id: 1,
         number: 1,
+        type: "Купе",
         seatsCount: 36,
       },
       {
         id: 2,
         number: 2,
+        type: "Плацкарт",
         seatsCount: 54,
       },
     ],
