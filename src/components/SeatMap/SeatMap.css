@@ -1,0 +1,80 @@
+.seat-map {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.seat-map__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.seat-map__title {
+  margin: 0;
+  color: #0f172a;
+  font-size: 24px;
+}
+
+.seat-map__description {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.seat-map__wagon {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow-x: auto;
+  padding: 20px;
+  border: 1px solid #dbe4f0;
+  border-radius: 24px;
+  background: #ffffff;
+}
+.seat-map__door {
+  width: fit-content;
+  margin: 0 auto 18px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.seat-map__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 48px);
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  min-width: max-content;
+  margin: 0 auto;
+}
+
+.seat-map__seat {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.seat-map__seat:hover {
+  transform: scale(1.06);
+}
+
+.seat-map__seat--free {
+  background: #22c55e;
+}
+
+.seat-map__seat--selected {
+  background: #2563eb;
+}

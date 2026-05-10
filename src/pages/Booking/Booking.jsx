@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { trains } from "../../data/trains";
 import "./Booking.css";
 import WagonSelector from "../../components/WagonSelector/WagonSelector";
+import SeatMap from "../../components/SeatMap/SeatMap";
 
 function Booking() {
   const { trainId } = useParams();
@@ -15,9 +16,21 @@ function Booking() {
   const [selectedWagon, setSelectedWagon] = useState(
     train?.wagons?.[0] || null,
   );
+  const [selectedSeats, setSelectedSeats] = useState([]);
 
   const handleSelectWagon = (wagon) => {
     setSelectedWagon(wagon);
+    setSelectedSeats([]);
+  };
+
+  const handleToggleSeat = (seatNumber) => {
+    setSelectedSeats((currentSeats) => {
+      if (currentSeats.includes(seatNumber)) {
+        return currentSeats.filter((seat) => seat !== seatNumber);
+      }
+
+      return [...currentSeats, seatNumber].sort((a, b) => a - b);
+    });
   };
 
   if (!train) {
@@ -60,6 +73,13 @@ function Booking() {
           selectedWagonId={selectedWagon?.id}
           onSelectWagon={handleSelectWagon}
         />
+        {selectedWagon && (
+          <SeatMap
+            seatsCount={selectedWagon.seatsCount}
+            selectedSeats={selectedSeats}
+            onToggleSeat={handleToggleSeat}
+          />
+        )}
       </div>
     </main>
   );
