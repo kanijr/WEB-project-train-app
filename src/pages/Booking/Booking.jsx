@@ -68,6 +68,10 @@ function Booking() {
     setSuccessMessage(
       `Бронювання створено. Місця: ${booking.seats.join(", ")}.`,
     );
+
+    window.setTimeout(() => {
+      setSuccessMessage("");
+    }, 4000);
   };
 
   if (!train) {
@@ -109,14 +113,15 @@ function Booking() {
         <div className="booking__success">{successMessage}</div>
       )}
 
-      <div className="booking__layout">
-        <div className="booking__main">
-          <WagonSelector
-            wagons={train.wagons}
-            selectedWagonId={selectedWagon?.id}
-            onSelectWagon={handleSelectWagon}
-          />
-          {selectedWagon && (
+      <div className="booking__content">
+        <WagonSelector
+          wagons={train.wagons}
+          selectedWagonId={selectedWagon?.id}
+          onSelectWagon={handleSelectWagon}
+        />
+
+        <div className="booking__booking-area">
+          <div className="booking__seat-section">
             <SeatMap
               seatsCount={selectedWagon.seatsCount}
               bookedSeats={bookedSeats}
@@ -124,16 +129,16 @@ function Booking() {
               selectedSeats={selectedSeats}
               onToggleSeat={handleToggleSeat}
             />
-          )}
-        </div>
+          </div>
 
-        <aside className="booking__aside">
-          <BookingForm
-            selectedSeats={selectedSeats}
-            totalPrice={totalPrice}
-            onSubmit={handleSubmitBooking}
-          />
-        </aside>
+          <aside className="booking__aside">
+            <BookingForm
+              selectedSeats={selectedSeats}
+              totalPrice={totalPrice}
+              onSubmit={handleSubmitBooking}
+            />
+          </aside>
+        </div>
       </div>
     </main>
   );

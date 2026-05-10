@@ -143,7 +143,8 @@ function SeatMap({
         <div>
           <h2 className="seat-map__title">Схема місць</h2>
           <p className="seat-map__description">
-            Натисніть на вільне місце, щоб обрати або скасувати вибір.
+            Вагон: <strong>{wagonType}</strong>. Натисніть на вільне місце, щоб
+            обрати або скасувати вибір.
           </p>
         </div>
 
