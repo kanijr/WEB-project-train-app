@@ -22,6 +22,18 @@ function SeatMap({
     return "seat-map__seat seat-map__seat--free";
   };
 
+  const getLayoutClassName = () => {
+    if (normalizedWagonType === "сидячий") {
+      return "seat-map__layout seat-map__layout--sitting";
+    }
+
+    if (normalizedWagonType.includes("плацкарт")) {
+      return "seat-map__layout seat-map__layout--platzkart";
+    }
+
+    return "seat-map__layout seat-map__layout--coupe";
+  };
+
   const renderSeat = (seatNumber) => {
     if (!seatNumber) {
       return null;
@@ -167,7 +179,7 @@ function SeatMap({
       <div className="seat-map__wagon">
         <div className="seat-map__door">Вхід</div>
 
-        <div className="seat-map__layout">{renderSeatsLayout()}</div>
+        <div className={getLayoutClassName()}>{renderSeatsLayout()}</div>
       </div>
     </section>
   );

@@ -82,23 +82,46 @@
 }
 
 .seat-map__layout {
-  --seat-size: 48px;
+  --wagon-layout-width: 258px;
+  --seat-height: 48px;
   --seat-gap: 10px;
   --aisle-width: 26px;
   --group-gap: 14px;
+  --seat-width: 48px;
 
   display: flex;
   flex-direction: column;
   gap: var(--seat-gap);
-  width: fit-content;
-  min-width: max-content;
+  width: var(--wagon-layout-width);
+  min-width: var(--wagon-layout-width);
   margin: 0 auto;
+}
+
+.seat-map__layout--sitting {
+  --seat-width: calc(
+    (var(--wagon-layout-width) - var(--aisle-width) - var(--seat-gap) * 4) / 4
+  );
+}
+
+.seat-map__layout--platzkart {
+  --aisle-width: 30px;
+  --seat-width: calc(
+    (var(--wagon-layout-width) - var(--aisle-width) - var(--seat-gap) * 3) / 3
+  );
+}
+
+.seat-map__layout--coupe {
+  --aisle-width: 54px;
+  --seat-width: calc(
+    (var(--wagon-layout-width) - var(--aisle-width) - var(--seat-gap) * 2) / 2
+  );
 }
 
 .seat-map__row {
   display: flex;
   align-items: center;
   gap: var(--seat-gap);
+  width: 100%;
 }
 
 .seat-map__row--group-end {
@@ -111,14 +134,15 @@
 
 .seat-map__aisle {
   width: var(--aisle-width);
-  height: var(--seat-size);
+  height: var(--seat-height);
   flex: 0 0 var(--aisle-width);
 }
 
 .seat-map__seat {
-  width: var(--seat-size);
-  height: var(--seat-size);
-  flex: 0 0 var(--seat-size);
+  width: var(--seat-width);
+  min-width: 38px;
+  height: var(--seat-height);
+  flex: 0 0 var(--seat-width);
   border: none;
   border-radius: 12px;
   color: #ffffff;
@@ -154,10 +178,15 @@
   }
 
   .seat-map__layout {
-    --seat-size: 44px;
+    --wagon-layout-width: 232px;
+    --seat-height: 44px;
     --seat-gap: 8px;
     --aisle-width: 24px;
     --group-gap: 14px;
+  }
+
+  .seat-map__layout--coupe {
+    --aisle-width: 48px;
   }
 
   .seat-map__seat {
@@ -168,9 +197,14 @@
 
 @media (max-width: 420px) {
   .seat-map__layout {
-    --seat-size: 40px;
+    --wagon-layout-width: 208px;
+    --seat-height: 40px;
     --seat-gap: 7px;
     --aisle-width: 20px;
+  }
+
+  .seat-map__layout--coupe {
+    --aisle-width: 42px;
   }
 
   .seat-map__seat {
