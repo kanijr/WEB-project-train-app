@@ -64,6 +64,11 @@
   color: #0f172a;
 }
 
+.booking-form__error {
+  color: #dc2626;
+  font-size: 13px;
+}
+
 .booking-form__button {
   padding: 14px 18px;
   border: none;
