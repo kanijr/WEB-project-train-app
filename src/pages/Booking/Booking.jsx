@@ -4,6 +4,7 @@ import { trains } from "../../data/trains";
 import "./Booking.css";
 import WagonSelector from "../../components/WagonSelector/WagonSelector";
 import SeatMap from "../../components/SeatMap/SeatMap";
+import BookingForm from "../../components/BookingForm/BookingForm";
 
 function Booking() {
   const { trainId } = useParams();
@@ -17,6 +18,8 @@ function Booking() {
     train?.wagons?.[0] || null,
   );
   const [selectedSeats, setSelectedSeats] = useState([]);
+
+  const totalPrice = train ? train.price * selectedSeats.length : 0;
 
   const handleSelectWagon = (wagon) => {
     setSelectedWagon(wagon);
@@ -67,19 +70,26 @@ function Booking() {
           <strong>{train.price} грн</strong>
         </div>
       </section>
-      <div className="booking__content">
-        <WagonSelector
-          wagons={train.wagons}
-          selectedWagonId={selectedWagon?.id}
-          onSelectWagon={handleSelectWagon}
-        />
-        {selectedWagon && (
-          <SeatMap
-            seatsCount={selectedWagon.seatsCount}
-            selectedSeats={selectedSeats}
-            onToggleSeat={handleToggleSeat}
+
+      <div className="booking__layout">
+        <div className="booking__main">
+          <WagonSelector
+            wagons={train.wagons}
+            selectedWagonId={selectedWagon?.id}
+            onSelectWagon={handleSelectWagon}
           />
-        )}
+          {selectedWagon && (
+            <SeatMap
+              seatsCount={selectedWagon.seatsCount}
+              selectedSeats={selectedSeats}
+              onToggleSeat={handleToggleSeat}
+            />
+          )}
+        </div>
+
+        <aside className="booking__aside">
+          <BookingForm selectedSeats={selectedSeats} totalPrice={totalPrice} />
+        </aside>
       </div>
     </main>
   );
